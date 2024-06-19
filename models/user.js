@@ -15,6 +15,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -63,7 +68,7 @@ module.exports = (sequelize, DataTypes) => {
         notNull: {
           msg: 'Type user is require'
         },
-        isIn: [['admin', 'user', 'guest']]
+        isIn: [['admin', 'employee', 'guest']]
       }
     }
   }, {
